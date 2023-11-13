@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
         preferredSize: Size.fromHeight(height * 0.07),
         child: AppBar(
           backgroundColor: Colors.black,
-          title: Row(
+          title: const Row(
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,6 +38,8 @@ class HomePage extends StatelessWidget {
               ),
               Spacer(),
               Icon(Icons.notifications, size: 30),
+              SizedBox(width: 15),
+              Icon(Icons.logout_outlined, size: 30),
             ],
           ),
         ),
@@ -164,15 +166,13 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 20),
-            Container(
+            SizedBox(
               height: height * 0.325,
               width: width * 0.92,
               child: Obx(() {
                 if (productController.products.isEmpty) {
-                  if (productController.products.length == 0) {
-                    productController.fetchProducts();
-                  }
-                  return Center(
+                  productController.fetchProducts();
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else {
@@ -191,7 +191,8 @@ class HomePage extends StatelessWidget {
                             color: const Color.fromARGB(255, 32, 34, 45),
                             elevation: 0.4,
                             shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(12)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12)),
                             ),
                             child: InkWell(
                               borderRadius: BorderRadius.circular(12),
@@ -211,14 +212,17 @@ class HomePage extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 10),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Expanded(
                                           child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                productController.products[index].title,
+                                                productController
+                                                    .products[index].title,
                                                 style: GoogleFonts.dmSans(
                                                   fontSize: width * 0.04,
                                                   fontWeight: FontWeight.w500,
@@ -229,7 +233,9 @@ class HomePage extends StatelessWidget {
                                               ),
                                               const SizedBox(height: 10),
                                               Text(
-                                                productController.products[index].restaurantChain,
+                                                productController
+                                                    .products[index]
+                                                    .restaurantChain,
                                                 style: GoogleFonts.dmSans(
                                                   fontSize: width * 0.038,
                                                   fontWeight: FontWeight.w600,
@@ -278,7 +284,7 @@ class HomePage extends StatelessWidget {
                   if (productController.products.length == 0) {
                     productController.fetchProducts();
                   }
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else {
@@ -316,11 +322,14 @@ class HomePage extends StatelessWidget {
                                   const SizedBox(width: 15),
                                   Expanded(
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          productController.products[index].title,
+                                          productController
+                                              .products[index].title,
                                           style: GoogleFonts.dmSans(
                                             fontSize: width * 0.045,
                                             fontWeight: FontWeight.w500,
@@ -331,7 +340,8 @@ class HomePage extends StatelessWidget {
                                         ),
                                         const SizedBox(height: 10),
                                         Text(
-                                          productController.products[index].restaurantChain,
+                                          productController
+                                              .products[index].restaurantChain,
                                           style: GoogleFonts.dmSans(
                                             fontSize: width * 0.04,
                                             fontWeight: FontWeight.w600,
